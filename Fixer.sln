@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fixer", "Fixer\Fixer.csproj", "{92881B34-56F4-42D7-9E03-69E81B442008}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fixer.Tests", "Fixer.Tests\Fixer.Tests.csproj", "{ED15123F-E97C-4606-B00B-CFEB6750DEF3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{92881B34-56F4-42D7-9E03-69E81B442008}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{92881B34-56F4-42D7-9E03-69E81B442008}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{92881B34-56F4-42D7-9E03-69E81B442008}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ED15123F-E97C-4606-B00B-CFEB6750DEF3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED15123F-E97C-4606-B00B-CFEB6750DEF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED15123F-E97C-4606-B00B-CFEB6750DEF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED15123F-E97C-4606-B00B-CFEB6750DEF3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
