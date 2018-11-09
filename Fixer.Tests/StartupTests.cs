@@ -3,6 +3,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Moq;
+using RestSharp;
 using Xunit;
 
 namespace Fixer.Tests
@@ -37,6 +38,27 @@ namespace Fixer.Tests
             var tmdbDataRefresherService = serviceProvider.GetService<IHostedService>();
 
             Assert.NotNull(tmdbDataRefresherService);
+        }
+
+        [Fact]
+        public void ConfigureServices_AddsRestClient()
+        {
+            var serviceProvider = ConfigureServicesWithMocks();
+
+            var restClient = serviceProvider.GetService<IRestClient>();
+
+            Assert.NotNull(restClient);
+        }
+
+        [Fact]
+        public void ConfigureServices_RestClientIsTransient()
+        {
+            var serviceProvider = ConfigureServicesWithMocks();
+
+            var restClient = serviceProvider.GetService<IRestClient>();
+            var restClient2 = serviceProvider.GetService<IRestClient>();
+
+            Assert.NotEqual(restClient, restClient2);
         }
 
         private static ServiceProvider ConfigureServicesWithMocks()

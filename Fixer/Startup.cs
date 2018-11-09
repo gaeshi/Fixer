@@ -9,6 +9,7 @@ using Fixer.Tmdb;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using RestSharp;
 using IHostingEnvironment = Microsoft.AspNetCore.Hosting.IHostingEnvironment;
 
 namespace Fixer
@@ -33,6 +34,8 @@ namespace Fixer
 
             services.AddSingleton<ITmdbCacheUpdater, FakeTmdbCacheUpdater>();
             services.AddSingleton<IHostedService, TmdbDataRefresherService>();
+
+            services.AddTransient<IRestClient, RestClient>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
