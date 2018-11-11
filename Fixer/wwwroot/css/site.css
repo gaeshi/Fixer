@@ -3,6 +3,8 @@ for details on configuring this project to bundle and minify static web assets. 
 body {
     padding-top: 50px;
     padding-bottom: 20px;
+    background-color: black;
+    color: #ccc;
 }
 
 /* Wrapping element */
@@ -34,4 +36,48 @@ body {
     .carousel-caption {
         display: none;
     }
+}
+
+.t-tip {
+    position: relative;
+    display: inline-block;
+}
+
+.t-tip .tooltiptext {
+    visibility: hidden;
+    width: 300px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 3px;
+    position: absolute;
+    z-index: 1;
+}
+
+.t-tip:hover .tooltiptext {
+    visibility: visible;
+}
+
+.panel-body {
+    background-color: black;
+}
+
+.panel-black {
+    background-color: #333;
+    color: white;
+    border-color: #555;
+}
+
+.panel-black > .panel-footer {
+    background-color: #333;
+    border-color: #555;
+}
+
+.dropdown-menu {
+    background-color: #333;
+}
+
+.dropdown-menu > li > a {
+    color: white;
 }

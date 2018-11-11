@@ -1,0 +1,99 @@
+﻿@using Fixer.Tmdb.Models;
+@model List<Movie>
+@{
+    const int maxCarouselSlideCount = 5;
+    const int columnCount = 3;
+    const int maxCutoffPosition = 120;
+}
+
+<h2>
+    @ViewData["Title"]
+</h2>
+
+<div id="movieCarousel" class="carousel slide" data-ride="carousel" style="margin-top: 32px" data-interval="6000">
+    <ol class="carousel-indicators">
+        @{
+            var countInModel = Model.Count();
+            var slideCount = countInModel > maxCarouselSlideCount ? maxCarouselSlideCount : countInModel;
+            for (var i = 0; i < slideCount; i++)
+            {
+                <li data-target="#movieCarousel" data-slide-to="@(i)" @((i == 0) ? "class='active'" : "")></li>
+            }
+        }
+    </ol>
+    <div class="carousel-inner" role="listbox" style="background-color: black; height: 300px">
+        @{
+            for (var i = 0; i < slideCount; i++)
+            {
+                var itemClass = (i == 0) ? "item active" : "item";
+                <div class="@Html.Raw(itemClass)">
+                    <img src="http://image.tmdb.org/t/p/w154/@Model[i].PosterPath" alt="@Model[i].Title" class="img-responsive"/>
+                    <div class="carousel-caption">
+                        <h3 class="text-left">
+                            @Model[i].Title (@Model[i].ReleaseDate.Year)
+                        </h3>
+                        <h4 class="text-left">
+                            TMDb score: @Model[i].VoteAverage.ToString("F1") / 10
+                        </h4>
+                        <h5 class="text-left">
+                            @Model[i].Overview
+                        </h5>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+    <a class="right carousel-control" href="#movieCarousel" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>
+
+@{
+    for (var row = 0; row < Model.Count() / columnCount; row++)
+    {
+        <div class="row">
+            @{
+                for (var col = 0; col < columnCount; col++)
+                {
+                    var i = col + row * columnCount;
+                    <div class="col-sm-4">
+                        <div class="panel panel-black">
+                            <div class="panel-heading" style="min-height: 80px">
+                                <h4>@Model[i].Title</h4>
+                                (@Model[i].ReleaseDate.Year)
+                            </div>
+                            <div class="panel-body" style="min-height: 261px">
+                                <img src="http://image.tmdb.org/t/p/w154/@Model[i].PosterPath" class="img-responsive center-block"/>
+                            </div>
+                            <div class="panel-footer"
+                                 tooltip="@Model[i].Overview"
+                                 style="min-height: 96px;">
+                                <div class="t-tip">
+                                    @{
+                                        var overviewText = Model[i].Overview;
+                                        if (overviewText.Length > maxCutoffPosition)
+                                        {
+                                            var cutoffPosition = overviewText.IndexOf(' ', 100);
+                                            if (cutoffPosition < 0)
+                                            {
+                                                cutoffPosition = maxCutoffPosition;
+                                            }
+                                            @string.Concat(overviewText.Substring(0, cutoffPosition), "...")
+                                            ;
+                                        }
+                                        else
+                                        {
+                                            @overviewText
+                                        }
+                                    }
+                                    <span class="tooltiptext">@overviewText</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+    }
+}

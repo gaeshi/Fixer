@@ -1,94 +1,85 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿<h1>Welcome</h1>
 
-<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="6000">
-    <ol class="carousel-indicators">
-        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-        <li data-target="#myCarousel" data-slide-to="1"></li>
-        <li data-target="#myCarousel" data-slide-to="2"></li>
-    </ol>
-    <div class="carousel-inner" role="listbox">
-        <div class="item active">
-            <img src="~/images/banner1.svg" alt="ASP.NET" class="img-responsive" />
-            <div class="carousel-caption" role="option">
-                <p>
-                    Learn how to build ASP.NET apps that can run anywhere.
-                    <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkID=525028&clcid=0x409">
-                        Learn More
-                    </a>
-                </p>
-            </div>
-        </div>
-        <div class="item">
-            <img src="~/images/banner2.svg" alt="Visual Studio" class="img-responsive" />
-            <div class="carousel-caption" role="option">
-                <p>
-                    There are powerful new features in Visual Studio for building modern web apps.
-                    <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkID=525030&clcid=0x409">
-                        Learn More
-                    </a>
-                </p>
-            </div>
-        </div>
-        <div class="item">
-            <img src="~/images/banner3.svg" alt="Microsoft Azure" class="img-responsive" />
-            <div class="carousel-caption" role="option">
-                <p>
-                    Learn how Microsoft's Azure cloud platform allows you to build, deploy, and scale web apps.
-                    <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkID=525027&clcid=0x409">
-                        Learn More
-                    </a>
-                </p>
-            </div>
-        </div>
-    </div>
-    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-    </a>
-    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-    </a>
-</div>
+<h2>Summary</h2>
+<p>
+    Create an ASP.NET Core 2.0 MVC Web Application. This web application will communicate with an external API periodically / automatically and
+    deliver data to a MySQL or Microsoft SQL Server database. Data must be accessed through controller endpoints to a view only accessible to
+    authorized users.
+</p>
 
-<div class="row">
-    <div class="col-md-3">
-        <h2>Application uses</h2>
-        <ul>
-            <li>Sample pages using ASP.NET Core MVC</li>
-            <li>Theming using <a href="https://go.microsoft.com/fwlink/?LinkID=398939">Bootstrap</a></li>
-        </ul>
-    </div>
-    <div class="col-md-3">
-        <h2>How to</h2>
-        <ul>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkID=398600">Add a Controller and View</a></li>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkId=699315">Manage User Secrets using Secret Manager.</a></li>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkId=699316">Use logging to log a message.</a></li>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkId=699317">Add packages using NuGet.</a></li>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkId=699319">Target development, staging or production environment.</a></li>
-        </ul>
-    </div>
-    <div class="col-md-3">
-        <h2>Overview</h2>
-        <ul>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkId=518008">Conceptual overview of what is ASP.NET Core</a></li>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkId=699320">Fundamentals of ASP.NET Core such as Startup and middleware.</a></li>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkId=398602">Working with Data</a></li>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkId=398603">Security</a></li>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkID=699321">Client side development</a></li>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkID=699322">Develop on different platforms</a></li>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkID=699323">Read more on the documentation site</a></li>
-        </ul>
-    </div>
-    <div class="col-md-3">
-        <h2>Run &amp; Deploy</h2>
-        <ul>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkID=517851">Run your app</a></li>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkID=517853">Run tools such as EF migrations and more</a></li>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkID=398609">Publish to Microsoft Azure Web Apps</a></li>
-        </ul>
-    </div>
-</div>
+<p>
+    Users should be able to register using their own email or an external service such as Facebook, Google or Microsoft. These registrations should
+    take advantage of the .NET Core Identity.
+</p>
+
+<p>
+    Data can be retrieved and displayed from any external API source that the engineer is familiar with.
+</p>
+
+<p>
+    As an example, an application could use The Movie Database (<a href="https://www.themoviedb.org/documentation/api">https://www.themoviedb.org/documentation/api</a>) to fetch movies and provide view filters for upcoming movie, top rated movies and popular movies.
+</p>
+
+<h2>
+    Task Objectives / Expectations
+</h2>
+
+<ul>
+    <li>
+        API Endpoint should use ASP.NET MVC Controllers.
+    </li>
+    <li>
+        Database should be populated using .NET Entity Framework migrations
+    </li>
+    <li>
+        Service registration / Dependency Injection knowledge should be shown
+    </li>
+    <li>
+        Entity Framework Querying should be used
+    </li>
+    <li>
+        3rd Party accounts should take advantage of Entity Framework
+    </li>
+</ul>
+<h2>Bonus Objectives</h2>
+<ul>
+    <li>
+        Use of cloud based services for resources (Azure/AWS preferred)
+    </li>
+    <li>
+        Deployment in the cloud with short summary on how the app was deployed
+    </li>
+</ul>
+<h3>Tools / Suggestions:</h3>
+Although we recommend engineers use what's comfortable for them, we do suggest using tool that make things easier for developing this project:
+<ul>
+    <li>
+        Visual Studio (Enterprise / Core)
+    </li>
+    <li>
+        NuGet package manager
+    </li>
+</ul>
+<p>
+    For Linux or MacOS, we recommend using Visual Studio Code:<br/>
+    <a href="https://code.visualstudio.com/download">https://code.visualstudio.com/download</a>
+</p>
+<p>
+    The .NET SDK for Linux (Ubuntu) can be downloaded here:<br/>
+    <a href="https://www.microsoft.com/net/download/linux/build">https://www.microsoft.com/net/download/linux/build</a>
+</p>
+<p>
+    The following article gives a good overview of how to get started with .NET Core and running this in Visual Studio Code:<br/>
+    <a href="https://docs.microsoft.com/en-us/dotnet/core/tutorials/with-visual-studio-code">https://docs.microsoft.com/en-us/dotnet/core/tutorials/with-visual-studio-code</a>
+</p>
+<p>
+    A skeleton for a .NET Core project can be cloned from this Git repository:<br/>
+    <a href="https://github.com/AaronFixer/EngineerTest.git">https://github.com/AaronFixer/EngineerTest.git</a>
+</p>
+<p>
+    Finished project should be made available through Github with some short steps on how to deploy and use in Development. Deployment
+    instructions should be kept to a minimum.
+</p>
+<p>
+    When submitted, we will review the code internally and provide details on the next steps / arrangements.
+</p>
