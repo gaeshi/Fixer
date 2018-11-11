@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using Fixer.Data;
 using Fixer.Services;
 using Fixer.Tmdb;
+using Fixer.Utils;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -29,13 +30,30 @@ namespace Fixer
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlite(
                     Configuration.GetConnectionString("DefaultConnection")));
+
+            services.AddDbContext<MovieDbContext>(options =>
+                options.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
+
             services.AddDefaultIdentity<IdentityUser>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
-            services.AddSingleton<ITmdbCacheUpdater, FakeTmdbCacheUpdater>();
+            services.Configure<TmdbApiSettings>(options =>
+                Configuration.GetSection("TmdbApi").Bind(options));
+            services.Configure<TmdbCacheUpdaterSettings>(options =>
+                Configuration.GetSection("TmdbCacheUpdater").Bind(options));
+            services.Configure<TmdbDataRefresherServiceSettings>(options =>
+                Configuration.GetSection("TmdbDataRefresherService").Bind(options));
             services.AddSingleton<IHostedService, TmdbDataRefresherService>();
+            services.AddSingleton<ITmdbCacheUpdater, TmdbCacheUpdater>();
+            services.AddTransient<ApiHelper>();
+
+            services.AddSingleton<IDateProvider, DateProvider>();
+            services.AddTransient<DbHelper>();
 
             services.AddTransient<IRestClient, RestClient>();
+            services.AddTransient<IRestClientWrapper, RestClientWrapper>();
+            services.AddTransient<ITmdbCacheUpdater, TmdbCacheUpdater>();
+            services.AddSingleton<IHostedService, TmdbDataRefresherService>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
