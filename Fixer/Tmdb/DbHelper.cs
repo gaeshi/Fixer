@@ -24,6 +24,11 @@ namespace Fixer.Tmdb
         public void AddOrUpdateMovies(IEnumerable<Movie> movies, Filter filter)
         {
             _logger.LogDebug("Updating/inserting movies");
+            if (movies == null)
+            {
+                _logger.LogWarning("movies is null. Is the API key valid?");
+                return;
+            }
 
             foreach (var movie in movies)
             {

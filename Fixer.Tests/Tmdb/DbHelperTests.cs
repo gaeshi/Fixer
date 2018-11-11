@@ -55,6 +55,19 @@ namespace Fixer.Tests.Tmdb
         }
 
         [Fact]
+        public void AddOrUpdateMovies_NullInput_DoesNotWriteToDb()
+        {
+            var options = CreateDbContextOptions("AddOrUpdateMovies_NullInput_DoesNotWriteToDb_WritesToDb");
+
+            AddMovieListToDb(options, null, Filter.Popular);
+
+            using (var context = new MovieDbContext(options))
+            {
+                Assert.Equal(0, context.Movies.Count());
+            }
+        }
+
+        [Fact]
         public void AddOrUpdateMovies_DuplicateInput_OneItemAdded()
         {
             var options = CreateDbContextOptions("AddOrUpdateMovies_DuplicateInput_OneItemAdded");
